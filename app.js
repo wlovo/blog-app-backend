@@ -24,7 +24,11 @@ app.use((err, req, res) => {
     Object.keys(err.errors).forEach((arrKey) => {
       obj[err.errors[arrKey].field] = err.errors[arrKey].messages;
     });
-    return validationErrorResponse(req, res, obj);
+    return res.status(403).json({
+      errors: {
+        obj,
+      },
+    });
   }
   return res.status(err.status || 500)
     .json({
