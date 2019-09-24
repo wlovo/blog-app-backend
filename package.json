@@ -2,10 +2,34 @@
   "name": "blog-app.backend",
   "version": "1.0.0",
   "description": "Blog app for PerfectSense interview",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "William Lovo",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon index.js",
+    "debug": "DEBUG=blog-app.backend:* nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.9",
+    "express": "^4.16.0",
+    "express-validation": "^1.0.2",
+    "faker": "^4.1.0",
+    "joi": "^14.3.1",
+    "joi-sequelize": "^0.2.8",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "morgan": "^1.9.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.2",
+    "sequelize": "^5.19.0",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
 }
