@@ -1,0 +1,11 @@
+{
+  "name": "blog-app.backend",
+  "version": "1.0.0",
+  "description": "Blog app for PerfectSense interview",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Lovo",
+  "license": "ISC"
+}
