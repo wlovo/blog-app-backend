@@ -1,3 +1,8 @@
+/**
+ * Parse/Normalize the given port value.
+ * Function borrowed from Express initialization files.
+ * @
+ */
 module.exports = function normalizePort(val) {
   const port = parseInt(val, 10);
 
