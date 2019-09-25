@@ -29,10 +29,10 @@ app.use(cookieParser());
 
 // Routes
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./routes/index'));
+app.use(require('./routes'));
 
 // Favicon
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '../', 'public', 'images', 'favicon.ico')));
 
 // Handle generic errors
 app.use(handleGenericError);

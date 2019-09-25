@@ -1,12 +1,11 @@
-const express = require('express');
-
-const router = express.Router();
+const router = require('express').Router();
 
 /* Main route */
-router.route('/').get((req, res) => res.json({ message: 'hello' }));
+router.route('/')
+  .get((req, res) => res.json({ message: 'hello' }));
 
 // TODO: Add user sign in/out plus validation
-// router.route('/sign-in').post(usersController.authenticate);
-// router.route('/sign-out').post(usersController.unauthenticate);
+// router.route('/user')
+//   .post(require('./user'));
 
 module.exports = router;
