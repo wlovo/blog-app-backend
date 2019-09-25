@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const expressValidation = require('express-validation');
+const favicon = require('serve-favicon');
 
 const app = express();
 
@@ -18,7 +19,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./routes/index'));
 
-app.use((err, req, res) => {
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
+app.use((err, req, res, next) => {
   if (err instanceof expressValidation.ValidationError) {
     const obj = {};
     Object.keys(err.errors).forEach((arrKey) => {
