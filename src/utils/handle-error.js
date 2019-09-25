@@ -1,4 +1,5 @@
 const expressValidation = require('express-validation');
+const set = require('lodash/set');
 
 /**
  * Generic error handler. Returns any error found in a json format.
@@ -9,17 +10,18 @@ const expressValidation = require('express-validation');
  * @param next next
  */
 module.exports = function handleGenericError(err, req, res, next) {
-  if (err instanceof expressValidation.ValidationError) {
-    const obj = {};
-    Object.keys(err.errors).forEach((arrKey) => {
-      obj[err.errors[arrKey].field] = err.errors[arrKey].messages;
-    });
+  if (err && err instanceof expressValidation.ValidationError) {
+    // Reduce messages into a single object
+    const messages = Object.keys(err.errors)
+      .reduce((obj, key) => set(obj, `${err.errors[key].field}`, err.errors[key].messages), {});
+
     return res.status(403).json({
       errors: {
-        obj,
+        messages,
       },
     });
   }
+  // Something else happened
   return res.status(err.status || 500)
     .json({
       status: err.status || 500,
