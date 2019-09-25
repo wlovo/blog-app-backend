@@ -1,14 +1,14 @@
 {
-  "name": "blog-app.backend",
+  "name": "blog-app-backend",
   "version": "1.0.0",
   "description": "Blog app for PerfectSense interview",
   "author": "William Lovo",
   "license": "ISC",
-  "main": "index.js",
+  "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "nodemon index.js",
-    "debug": "DEBUG=blog-app.backend:* nodemon index.js"
+    "start": "nodemon ./src/server.js",
+    "debug": "DEBUG=blog-app.backend:* nodemon ./src/server.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
