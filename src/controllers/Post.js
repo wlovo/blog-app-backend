@@ -3,9 +3,9 @@ const pick = require('lodash/pick');
 const { Post } = require('../models/');
 
 const params = [
+  'authorId',
   'title',
   'body',
-  'authorId',
 ];
 
 module.exports.create = async (req, res) => {
@@ -35,24 +35,24 @@ module.exports.readAll = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   const post = get(req, 'body.post');
-  const postId = get(req, 'params.id');
-  if (!post || !postId) {
+  const id = get(req, 'params.id');
+  if (!post || !id) {
     return res.json({});
   }
 
-  const existingPost = await Post.findByPk(postId);
+  const existingPost = await Post.findByPk(id);
   existingPost.update(post, { fields: params });
   await existingPost.save();
   return res.json(existingPost);
 };
 
 module.exports.delete = async (req, res) => {
-  const postId = get(req, 'params.id');
-  if (!postId) {
+  const id = get(req, 'params.id');
+  if (!id) {
     return res.json({});
   }
 
-  const post = await Post.findByPk(postId);
+  const post = await Post.findByPk(id);
   const deletedPost = await post.destroy();
   return res.json({ deletedId: deletedPost.id });
 };
