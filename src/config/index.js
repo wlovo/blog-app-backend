@@ -6,6 +6,14 @@ const config = {
     port: process.env.PORT || '8000',
     secret: process.env.SECRET || 'secret',
   },
+  db: {
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || '8000',
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || 'root',
+    database: process.env.DB_NAME || 'blog_app',
+    dialect: process.env.DB_DIALECT || 'mysql',
+  },
   jwt: {
     secret: process.env.JWT_PRIVATE_KEY || 'secret',
   },

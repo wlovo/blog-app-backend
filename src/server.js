@@ -7,7 +7,7 @@ const logger = require('morgan');
 const path = require('path');
 
 // Custom functions/objects
-const env = require('./config/environment');
+const config = require('./config');
 const handleGenericError = require('./utils/handle-error');
 const normalizePort = require('./utils/normalize-port');
 
@@ -39,7 +39,7 @@ app.use(handleGenericError);
 
 // Spin the server up
 const server = app.listen(
-  normalizePort(env.app.port),
+  normalizePort(config.app.port),
   () => console.log(`Listening on port ${server.address().port}.`),
 );
 
