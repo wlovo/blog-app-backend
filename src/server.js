@@ -9,7 +9,7 @@ const debug = require('debug')('blog-app-backend:server');
 
 // Custom functions/objects
 const config = require('./config');
-const handleGenericError = require('./utils/handle-error');
+const { handleGenericError, logError } = require('./utils/handle-errors');
 const normalizePort = require('./utils/normalize-port');
 
 const app = express();
@@ -35,7 +35,8 @@ app.use(require('./routes'));
 // Favicon
 app.use(favicon(path.join(__dirname, '../', 'public', 'images', 'favicon.ico')));
 
-// Handle generic errors
+// Log and handle generic errors
+app.use(logError);
 app.use(handleGenericError);
 
 // Spin the server up

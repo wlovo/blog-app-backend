@@ -1,4 +1,4 @@
-const expressValidation = require('express-validation');
+const debug = require('debug')('blog-app-backend:errors');
 const set = require('lodash/set');
 
 /**
@@ -9,8 +9,14 @@ const set = require('lodash/set');
  * @param res Express response object
  * @param next next
  */
-module.exports = function handleGenericError(err, req, res, next) {
-  if (err && err instanceof expressValidation.ValidationError) {
+module.exports.logError = (err, req, res, next) => {
+  debug(err, err.stack);
+  next(err);
+};
+
+module.exports.handleGenericError = (err, req, res, next) => {
+  // Client error
+  if (err) {
     // Reduce messages into a single object
     const messages = Object.keys(err.errors)
       .reduce((obj, key) => set(obj, `${err.errors[key].field}`, err.errors[key].messages), {});
