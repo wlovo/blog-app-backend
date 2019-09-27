@@ -5,6 +5,7 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const path = require('path');
+const debug = require('debug')('blog-app-backend:server');
 
 // Custom functions/objects
 const config = require('./config');
@@ -40,7 +41,7 @@ app.use(handleGenericError);
 // Spin the server up
 const server = app.listen(
   normalizePort(config.app.port),
-  () => console.log(`Listening on port ${server.address().port}.`),
+  () => debug(`Listening on port ${server.address().port}.`),
 );
 
 module.exports = app;
