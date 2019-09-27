@@ -2,6 +2,9 @@ const Sequelize = require('sequelize');
 const debug = require('debug')('blog-app-backend:sequelize');
 const config = require('../config');
 
+const Comment = require('./comment');
+const Post = require('./post');
+
 const sequelize = new Sequelize(
   config.db.database,
   config.db.username,
@@ -27,9 +30,10 @@ if (process.env.DEBUG) {
 }
 
 const models = {
-  Post: sequelize.import('./Post'),
+  post: sequelize.import('post', Post),
+  comment: sequelize.import('comment', Comment),
 };
 
-debug(models.Post);
+sequelize.sync();
 
 module.exports = models;

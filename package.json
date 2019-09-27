@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./src/server.js",
-    "debug": "DEBUG=blog-app-backend:* nodemon ./src/server.js"
+    "debug": "DEBUG=blog-app-backend:* nodemon ./src/server.js",
+    "migrate": "sequelize db:migrate",
+    "undo-migrate": "sequelize db:migrate:undo"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
