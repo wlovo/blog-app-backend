@@ -30,8 +30,8 @@ if (process.env.DEBUG) {
 }
 
 const models = {
-  post: sequelize.import('post', Post),
-  comment: sequelize.import('comment', Comment),
+  Post: sequelize.import('post', Post),
+  Comment: sequelize.import('comment', Comment),
 };
 
 sequelize.sync();
