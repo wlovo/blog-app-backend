@@ -23,6 +23,7 @@ module.exports.read = async (req, res) => {
   if (!id) {
     return res.json({});
   }
+
   const post = await Post.findByPk(id);
   return res.json(post);
 };
@@ -30,4 +31,28 @@ module.exports.read = async (req, res) => {
 module.exports.readAll = async (req, res) => {
   const posts = await Post.findAll();
   return res.json(posts);
+};
+
+module.exports.update = async (req, res) => {
+  const post = get(req, 'body.post');
+  const postId = get(req, 'params.id');
+  if (!post || !postId) {
+    return res.json({});
+  }
+
+  const existingPost = await Post.findByPk(postId);
+  existingPost.update(post, { fields: params });
+  await existingPost.save();
+  return res.json(existingPost);
+};
+
+module.exports.delete = async (req, res) => {
+  const postId = get(req, 'params.id');
+  if (!postId) {
+    return res.json({});
+  }
+
+  const post = await Post.findByPk(postId);
+  const deletedPost = await post.destroy();
+  return res.json({ deletedId: deletedPost.id });
 };
