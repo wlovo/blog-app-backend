@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-  }, {});
+  }, {
+    timestamps: true,
+  });
   Post.associate = (models) => {
     // associations can be defined here
   };

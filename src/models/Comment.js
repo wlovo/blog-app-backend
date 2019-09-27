@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-  }, {});
+  }, {
+    timestamps: true,
+  });
   Comment.associate = (models) => {
     // associations can be defined here
   };
