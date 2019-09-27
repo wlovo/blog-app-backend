@@ -7,8 +7,8 @@ const config = {
     secret: process.env.SECRET || 'secret',
   },
   db: {
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || '8000',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || 8889,
     username: process.env.DB_USERNAME || 'root',
     password: process.env.DB_PASSWORD || 'root',
     database: process.env.DB_NAME || 'blog_app',

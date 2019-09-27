@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./src/server.js",
-    "debug": "DEBUG=blog-app.backend:* nodemon ./src/server.js"
+    "debug": "DEBUG=blog-app-backend:* nodemon ./src/server.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -28,7 +28,7 @@
     "jwks-rsa": "^1.1.1",
     "lodash": "^4.17.15",
     "morgan": "^1.9.0",
-    "mysql": "^2.17.1",
+    "mysql2": "^1.7.0",
     "nodemon": "^1.19.2",
     "sequelize": "^5.19.0",
     "sequelize-cli": "^5.5.1",
