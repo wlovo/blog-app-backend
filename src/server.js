@@ -1,11 +1,12 @@
 // NPM packages
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const debug = require('debug')('blog-app-backend:server');
 const express = require('express');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const path = require('path');
-const debug = require('debug')('blog-app-backend:server');
 
 // Custom functions/objects
 const config = require('./config');
@@ -13,6 +14,9 @@ const { handleGenericError, logError } = require('./utils/handle-errors');
 const normalizePort = require('./utils/normalize-port');
 
 const app = express();
+
+// Use CORS
+app.use(cors());
 
 // Logger
 app.use(logger('dev'));
