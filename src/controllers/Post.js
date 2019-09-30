@@ -1,6 +1,6 @@
 const get = require('lodash/get');
 const pick = require('lodash/pick');
-const { Post } = require('../models/');
+const { Post } = require('../models');
 
 const params = [
   'authorId',
@@ -24,12 +24,12 @@ module.exports.read = async (req, res) => {
     return res.json({});
   }
 
-  const post = await Post.findByPk(id);
+  const post = await Post.findByPk(id, { include: [{ all: true }] });
   return res.json(post);
 };
 
 module.exports.readAll = async (req, res) => {
-  const posts = await Post.findAll();
+  const posts = await Post.findAll({ include: [{ all: true }] });
   return res.json(posts);
 };
 

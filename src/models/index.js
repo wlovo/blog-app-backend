@@ -30,9 +30,11 @@ if (process.env.DEBUG) {
 }
 
 const models = {
-  Post: sequelize.import('post', Post),
-  Comment: sequelize.import('comment', Comment),
+  Comment: sequelize.import('Comment', Comment),
+  Post: sequelize.import('Post', Post),
 };
+
+Object.values(models).forEach((model) => (model.associate && typeof model.associate === 'function' ? model.associate(models) : null));
 
 sequelize.sync();
 
