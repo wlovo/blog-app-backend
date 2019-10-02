@@ -2,11 +2,7 @@ const get = require('lodash/get');
 const pick = require('lodash/pick');
 const { Post } = require('../models');
 
-const params = [
-  'authorId',
-  'title',
-  'body',
-];
+const mutableParams = ['authorId', 'title', 'body'];
 
 module.exports.create = async (req, res) => {
   let post = get(req, 'body.post');
@@ -14,7 +10,7 @@ module.exports.create = async (req, res) => {
     return res.json({});
   }
 
-  post = await Post.create(pick(post, params));
+  post = await Post.create(pick(post, mutableParams));
   return res.json(post);
 };
 
@@ -24,12 +20,19 @@ module.exports.read = async (req, res) => {
     return res.json({});
   }
 
-  const post = await Post.findByPk(id, { include: [{ all: true }] });
+  const post = await Post.findByPk(id,
+    { include: [{ all: true, order: [['updatedAt', 'ASC']] }] });
   return res.json(post);
 };
 
 module.exports.readAll = async (req, res) => {
-  const posts = await Post.findAll({ include: [{ all: true }] });
+  const limit = Number.parseInt(get(req, 'query.limit'), 10);
+  const order = get(req, 'query.order', 'DESC');
+  const posts = await Post.findAll({
+    include: [{ all: true, order: [['updatedAt', 'ASC']] }],
+    limit: limit || null,
+    order: [['updatedAt', order]],
+  });
   return res.json(posts);
 };
 
@@ -41,7 +44,7 @@ module.exports.update = async (req, res) => {
   }
 
   const existingPost = await Post.findByPk(id);
-  existingPost.update(post, { fields: params });
+  existingPost.update(post, { fields: mutableParams });
   await existingPost.save();
   return res.json(existingPost);
 };

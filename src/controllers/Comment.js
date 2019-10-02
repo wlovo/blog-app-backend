@@ -29,7 +29,8 @@ module.exports.read = async (req, res) => {
 };
 
 module.exports.readAll = async (req, res) => {
-  const comments = await Comment.findAll();
+  const order = get(req, 'query.order', 'DESC');
+  const comments = await Comment.findAll({ order: [['updatedAt', order]] });
   return res.json(comments);
 };
 
