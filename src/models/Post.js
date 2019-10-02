@@ -26,8 +26,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
   Post.associate = (models) => {
-    // associations can be defined here
-    Post.hasMany(models.Comment, { as: 'comments', foreignKey: 'postId' });
+    Post.hasMany(models.Comment, {
+      as: 'comments',
+      foreignKey: 'postId',
+      onDelete: 'cascade',
+      hooks: true,
+    });
   };
   return Post;
 };
