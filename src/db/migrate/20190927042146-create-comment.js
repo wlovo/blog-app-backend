@@ -8,20 +8,20 @@ module.exports = {
       type: Sequelize.INTEGER,
     },
     authorId: {
+      allowNull: true,
       type: Sequelize.INTEGER,
-      allowNull: false,
     },
     postId: {
-      type: Sequelize.INTEGER,
       allowNull: false,
+      type: Sequelize.INTEGER,
       references: {
         model: 'Posts',
         key: 'id',
       },
     },
     body: {
-      type: Sequelize.TEXT,
       allowNull: false,
+      type: Sequelize.TEXT,
     },
     createdAt: {
       allowNull: false,

@@ -7,7 +7,7 @@ module.exports = {
       type: Sequelize.INTEGER,
     },
     authorId: {
-      allowNull: false,
+      allowNull: true,
       type: Sequelize.INTEGER,
     },
     title: {

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       authorId: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER,
       },
       postId: {
