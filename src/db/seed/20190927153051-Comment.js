@@ -2,25 +2,17 @@ const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const comments = [
-      {
-        body: 'Hi',
-        authorId: 1,
-        postId: 1,
-      },
-      {
-        body: 'I don\'t know what this means',
-        authorId: 1,
-        postId: 2,
-      },
-      {
-        body: 'Huh?',
-        authorId: 1,
-        postId: 3,
-      },
-    ];
+    const fakeComments = [];
 
-    return queryInterface.bulkInsert('Comments', comments, {});
+    for (let i = 0; i < 10; i += 1) {
+      fakeComments.push({
+        body: faker.lorem.sentences(),
+        authorId: 1,
+        postId: faker.random.number({ min: 1, max: 8 }),
+      });
+    }
+
+    return queryInterface.bulkInsert('Comments', fakeComments, {});
   },
 
   down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Comments', null, {}),
