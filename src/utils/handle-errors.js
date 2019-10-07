@@ -2,7 +2,7 @@ const debug = require('debug')('blog-app-backend:errors');
 const set = require('lodash/set');
 
 /**
- * Generic error handler. Returns any error found in a json format.
+ * Log errors.
  *
  * @param err Error object
  * @param req Express request object
@@ -14,6 +14,14 @@ module.exports.logError = (err, req, res, next) => {
   next(err);
 };
 
+/**
+ * Generic error handler. Returns any error found in a json format.
+ *
+ * @param err Error object
+ * @param req Express request object
+ * @param res Express response object
+ * @param next next
+ */
 module.exports.handleGenericError = (err, req, res, next) => {
   // Client error
   if (err) {

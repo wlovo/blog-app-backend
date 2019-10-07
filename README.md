@@ -12,3 +12,7 @@ From the main directory run the following command: `yarn start`
 - `yarn migrate` migrates the tables for the generated models into the database defined in `src/config/index.js` under the `db` field
 - `yarn undo-migrate` drops the tables for the  models in the database defined in `src/config/index.js` under the `db` field
 - `yarn seed` adds seed data into the database defined in `src/config/index.js` under the `db` field
+
+## Accompanying Frontend
+
+The following [repo](https://github.com/wlovo/blog-app-frontend) contains a React-based Frontend that uses this backend for demonstration purposes.

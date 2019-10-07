@@ -1,5 +1,6 @@
 require('dotenv').config({ silent: true });
 
+// Central location for configuration values
 const config = {
   app: {
     env: process.env.NODE_ENV || 'development',

@@ -2,8 +2,15 @@ const get = require('lodash/get');
 const pick = require('lodash/pick');
 const { Post } = require('../models');
 
+// Fields that can be changed/mutated
 const mutableParams = ['authorId', 'title', 'body'];
 
+/**
+ * Create a post based on given object.
+ * @param req Express request object
+ * @param res Express response object
+ * @return the created post or empty object, if object isn't found
+ */
 module.exports.create = async (req, res) => {
   let post = get(req, 'body.post');
   if (!post) {
@@ -14,6 +21,12 @@ module.exports.create = async (req, res) => {
   return res.json(post);
 };
 
+/**
+ * Finds and returns the post by id.
+ * @param req Express request object
+ * @param res Express response object
+ * @return the created post or empty object, if id isn't found
+ */
 module.exports.read = async (req, res) => {
   const id = get(req, 'params.id');
   if (!id) {
@@ -25,6 +38,12 @@ module.exports.read = async (req, res) => {
   return res.json(post);
 };
 
+/**
+ * Finds and returns all posts.
+ * @param req Express request object
+ * @param res Express response object
+ * @return the array of posts
+ */
 module.exports.readAll = async (req, res) => {
   const limit = Number.parseInt(get(req, 'query.limit'), 10);
   const order = get(req, 'query.order', 'DESC');
@@ -36,6 +55,12 @@ module.exports.readAll = async (req, res) => {
   return res.json(posts);
 };
 
+/**
+ * Updates the specified post.
+ * @param req Express request object
+ * @param res Express response object
+ * @return the created post or empty object, if id or post object isn't found
+ */
 module.exports.update = async (req, res) => {
   const post = get(req, 'body.post');
   const id = get(req, 'params.id');
@@ -49,6 +74,12 @@ module.exports.update = async (req, res) => {
   return res.json(existingPost);
 };
 
+/**
+ * Deletes the post by id.
+ * @param req Express request object
+ * @param res Express response object
+ * @return the id of the deleted post
+ */
 module.exports.delete = async (req, res) => {
   const id = get(req, 'params.id');
   if (!id) {
