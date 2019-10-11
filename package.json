@@ -6,6 +6,9 @@
   "license": "ISC",
   "main": "./src/server.js",
   "private": true,
+  "engines": {
+    "node": ">=10.15.0"
+  },
   "scripts": {
     "start": "nodemon ./src/server.js",
     "debug": "DEBUG=blog-app-backend:* nodemon ./src/server.js",
