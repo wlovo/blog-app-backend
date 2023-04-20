@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 const debug = require('debug')('blog-app-backend:sequelize');
 const config = require('../config');
 
-const Comment = require('./comment');
-const Post = require('./post');
+const Comment = require('./Comment');
+const Post = require('./Post');
 
 const sequelize = new Sequelize(
   config.db.database,
@@ -30,8 +30,8 @@ if (process.env.DEBUG) {
 }
 
 const models = {
-  Comment: sequelize.import('Comment', Comment),
-  Post: sequelize.import('Post', Post),
+  Comment: Comment(sequelize, Sequelize.DataTypes),
+  Post: Post(sequelize, Sequelize.DataTypes),
 };
 
 Object.values(models).forEach((model) => (model.associate && typeof model.associate === 'function' ? model.associate(models) : null));

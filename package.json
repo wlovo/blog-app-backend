@@ -7,7 +7,7 @@
   "main": "./src/server.js",
   "private": true,
   "engines": {
-    "node": ">=10.15.0"
+    "node": ">=12"
   },
   "scripts": {
     "start": "nodemon ./src/server.js",
@@ -17,23 +17,23 @@
     "undo-migrate": "sequelize db:migrate:undo:all"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.0",
     "config": "^3.2.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
     "debug": "^2.6.9",
     "dotenv": "^8.1.0",
-    "express": "^4.16.0",
-    "express-jwt": "^5.1.0",
-    "express-jwt-authz": "^2.3.1",
-    "express-validation": "^1.0.2",
+    "express": "^4.18.0",
+    "express-jwt": "^8.4.1",
+    "express-jwt-authz": "^2.4.1",
+    "express-validation": "^3.0.2",
     "faker": "^4.1.0",
     "joi": "^14.3.1",
     "lodash": "^4.17.15",
-    "morgan": "^1.9.0",
-    "mysql2": "^1.7.0",
-    "nodemon": "^1.19.2",
-    "sequelize": "^5.19.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.0.0",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.31.0",
     "sequelize-cli": "^5.5.1",
     "serve-favicon": "^2.5.0"
   },

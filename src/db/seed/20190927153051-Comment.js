@@ -9,6 +9,8 @@ module.exports = {
         body: faker.lorem.sentences(),
         authorId: 1,
         postId: faker.random.number({ min: 1, max: 8 }),
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW'),
       });
     }
 
